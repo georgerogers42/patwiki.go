@@ -3,13 +3,15 @@ package main
 import (
 	"github.com/bmizerany/pat.go"
 	"net/http"
+	"flag"
 	"text/template"
 )
 
 func main() {
+	port := flag.String("p","5000")
 	m := pat.New()
 	m.Get("/hello/:name", http.HandlerFunc(hello))
-	http.ListenAndServe("localhost:5000", m)
+	http.ListenAndServe(":"+port, m)
 }
 
 var helloTpl = template.Must(template.ParseFiles("hello.html"))
