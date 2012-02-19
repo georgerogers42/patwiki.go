@@ -11,7 +11,7 @@ func main() {
 	port := flag.String("p", "5000", "Port to run on")
 	flag.Parse()
 	m := pat.New()
-	m.Get("/hello/:name", http.HandlerFunc(hello))
+	m.Get("/:name", http.HandlerFunc(hello))
 	http.ListenAndServe(":"+*port, m)
 }
 
