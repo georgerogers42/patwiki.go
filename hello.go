@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/bmizerany/pat.go"
+	"github.com/georgerogers42/pat.go"
 	"net/http"
 	"flag"
 	"text/template"
@@ -11,7 +11,7 @@ func main() {
 	port := flag.String("p", "5000", "Port to run on")
 	flag.Parse()
 	m := pat.New()
-	m.Get("/:name", http.HandlerFunc(hello))
+	m.Get("/*", http.HandlerFunc(hello))
 	http.ListenAndServe(":"+*port, m)
 }
 
